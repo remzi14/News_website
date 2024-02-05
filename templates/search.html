@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Qidiruv Natijalari{% endblock title %}
+
+{% block content %}
+  <div class="container my-5">
+    <h1>Qidiruv Natijalari</h1>
+
+    {% if query %}
+      <p>Qidiruv natijalari uchun: <strong>{{ query }}</strong></p>
+    {% endif %}
+
+<!-- ... (Old code) ... -->
+
+{% if results %}
+  <ul class="list-group">
+    {% for news in results %}
+      <li class="list-group-item">
+        <h2>{{ news.title }}</h2>
+           <p>Category: {{ news.category.name }}</p>
+        <p>Published on: {{ news.publish_time }}</p>
+          <img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid">
+        <p>{{ news.body }}</p>
+
+
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Hech qanday natija topilmadi.</p>
+{% endif %}
+
+<!-- ... (Old code) ... -->
+
+  </div>
+{% endblock content %}

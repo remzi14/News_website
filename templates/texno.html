@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Texnologiya{% endblock title%}
+
+
+
+{% block content %}
+
+
+
+
+        <!-- Top News Start-->
+        <div class="top-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 tn-right">
+                        <div class="row">
+                            {% for new in texno %}
+                            <div class="col-md-6">
+                                <div class="tn-img">
+                                    <img src="{{ new.image.url }}" />
+                                    <div class="tn-content">
+                                        <div class="tn-content-inner">
+                                            <a class="tn-date" href="{% url 'page' new.slug %}"><i class="far fa-clock"></i>{{ new.publish_time }}</a>
+                                            <a class="tn-title" href="{% url 'page' new.slug %}">{{ new.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top News End-->
+
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Categoriya qo'shish{% endblock title %}
+
+{% block content %}
+<h3>Categoriya qo'shish</h3>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button type="submit">Qo'shish</button>
+</form>
+
+{% endblock content %}
