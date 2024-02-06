@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Yangilik qo'shish{% endblock title %}
 
 {% block content %}
-<h3>Yangiliklar qo'shish</h3>
-<form method="POST" enctype="multipart/form-data">
+    <div class="container">
+    <h3>Yangiliklar qo'shish</h3>
+
+    <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ forms.as_p }}
+    {{ forms|crispy }}
     <button type="submit">Qo'shish</button>
-</form>
+    </form>
 
 {% endblock content %}

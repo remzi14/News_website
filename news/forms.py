@@ -18,7 +18,10 @@ class AddCategory(forms.ModelForm):
 
 
 
-
+class Edit(forms.ModelForm):
+    class Meta:
+        model=News
+        fields=("title","body","status","image","category")
 
 
 

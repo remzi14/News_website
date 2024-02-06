@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import News
 from django.db.models import Q
-from .forms import AddNews,AddCategory
+from .forms import AddNews,AddCategory,Edit
 # Create your views here.
 
 def home(request):
@@ -94,7 +94,7 @@ def addnew(request):
         forms=AddNews(request.POST,files=request.FILES)
         if forms.is_valid():
             forms.save()
-            return redirect('bosh_sahifa')
+            return redirect('saxifa ')
     context={
             "forms":forms
 
@@ -107,17 +107,60 @@ def addnew(request):
 
 """Category qo'shish"""
 def addcat(request):
-    forms=()
+    forms=AddCategory()
     if request.method=='POST':
         forms=AddCategory(request.POST,files=request.FILES)
         if forms.is_valid():
             forms.save()
-            return redirect('bosh_sahifa')
+            return redirect('saxifa')
     context={
             "forms":forms
 
         }
     return render(request,"add_cat.html",context)
+
+
+
+
+
+
+
+
+"""Yangiliklni tahrirlash"""
+def Editnew(request,slug):
+    new=get_object_or_404(News,slug=slug)
+    if request.method=='POST':
+        forms=Edit(request.POST,instance=new)
+        if forms.is_valid():
+            forms.save()
+            return redirect('saxifa')
+    else:
+        forms=Edit(instance=new)
+
+    context={
+        "forms":forms
+    }
+    return render(request,"edit_new.html",context)
+
+
+
+"""Yangiliklni o'chirish"""
+def Delet(request,slug):
+    new=get_object_or_404(News,slug=slug)
+    if request.method=='POST':
+        new.delete()
+        return redirect("saxifa")
+    context={
+        "new":new
+    }
+    return render(request,"delet.html",context)
+
+
+
+
+
+
+
 
 
 

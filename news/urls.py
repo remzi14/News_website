@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import home,aloqa,single,sport_new,texno,mahaliy_new,xorij,SearchNew,addnew,addcat
+from .views import home,aloqa,single,sport_new,texno,mahaliy_new,xorij,SearchNew,addnew,addcat,Editnew,Delet
 
 
 urlpatterns=[
@@ -14,9 +14,8 @@ urlpatterns=[
     path('search/',SearchNew,name='qidir'),
     path('add/',addnew,name='ad'),
     path('add_cat/',addcat,name='ad_cat'),
+    path('edit/<slug:slug>/',Editnew,name='edit'),
+    path('delet/<slug:slug>/',Delet,name='del'),
 ]
-
-
-
 
 

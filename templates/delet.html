@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Yangilikni o'chirish{% endblock title %}
+
+{% block content %}
+<h3>Siz rostanham <b>{{ new.title }}</b> ni o'chirasizmi ? </h3>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">O'chirish</button>
+    <a href="{% tempaltes 'single-page' %}">Orqaga</a>
+</form>
+
+{% endblock content %}
+

@@ -22,6 +22,8 @@
                             <a class="sn-title" href="">{{ news.title }}</a>
                             <a class="sn-date" href=""><i class="far fa-clock"></i>{{ news.publish_time}}</a>
                             <p>{{ news.body }}</p>
+                            <a href="{% url 'edit' news.slug %}">Tahrirlash</a>
+                            <a href="{% url 'del' news.slug %}">O'chirish</a>
                         </div>
                     </div>
 
